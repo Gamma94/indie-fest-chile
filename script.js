@@ -2,23 +2,11 @@
 const FORM_URL    = (window.INIT && window.INIT.formUrl)    || 'https://docs.google.com/forms/d/e/1FAIpQLSeNtEP1sWHSezerIWapJbk-qAeq9prUp0HbLmzQGOVy2Ms3vg/viewform';
 const CO_FORM_URL = (window.INIT && window.INIT.coFormUrl) || 'https://docs.google.com/forms/d/e/1FAIpQLScgeALIIFcIREVZLfNxkLhqUi1gE3W6HQyW9YOIknNe7iqHEw/viewform';
 
-// Botones “Postula tu juego”
-const applyLinks = [
-  document.getElementById('applyLink'),
-  document.getElementById('applyLinkHero'),
-  document.getElementById('applyLinkAbout'),
-].filter(Boolean);
-applyLinks.forEach(el => { el.href = FORM_URL; });
+// Asigna URLs según el data-atributo
+document.querySelectorAll('[data-link="form"]').forEach(a   => a.href = FORM_URL);
+document.querySelectorAll('[data-link="coform"]').forEach(a => a.href = CO_FORM_URL);
 
-// Botones “Postula como Co-Streamer”
-const applyLinksCoStreamer = [
-  document.getElementById('applyLinkCo'),
-  document.getElementById('applyLinkHeroCo'),
-  document.getElementById('applyLinkAboutCo'),
-].filter(Boolean);
-applyLinksCoStreamer.forEach(el => { el.href = CO_FORM_URL; });
-
-// Mobile menu toggle...
+// Mobile menu toggle
 const toggleBtn = document.querySelector('.nav__toggle');
 const menu = document.getElementById('mainMenu');
 if (toggleBtn && menu) {
