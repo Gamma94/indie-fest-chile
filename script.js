@@ -1,9 +1,12 @@
 // Indie Fest Chile - Home interactions
 const FORM_URL = (window.INIT && window.INIT.formUrl) || 'https://docs.google.com/forms/d/e/1FAIpQLSeNtEP1sWHSezerIWapJbk-qAeq9prUp0HbLmzQGOVy2Ms3vg/viewform'; // ← reemplaza con la URL real del formulario
-
+const CO_FORM_URL = (window.INIT && window.INIT.formUrl) || 'https://docs.google.com/forms/d/e/1FAIpQLScgeALIIFcIREVZLfNxkLhqUi1gE3W6HQyW9YOIknNe7iqHEw/viewform';
 // Update CTA links
 const applyLinks = [document.getElementById('applyLink'), document.getElementById('applyLinkHero'), document.getElementById('applyLinkAbout')];
 applyLinks.forEach(el => { if (el) { el.href = FORM_URL; } });
+
+const applyLinksCoStreamer = [document.getElementById('applyLinkCo'), document.getElementById('applyLinkHeroCo'), document.getElementById('applyLinkAboutCo')];
+applyLinks.forEach(el => { if (el) { el.href = CO_FORM_URL; } });
 
 // Mobile menu toggle
 const toggleBtn = document.querySelector('.nav__toggle');
