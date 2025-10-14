@@ -55,7 +55,7 @@ body{ margin:0; font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, R
   font-size: clamp(20px, 3vw + 10px, var(--hero-headline-max));
   color: var(--orange);
   text-align:center;
-  -webkit-text-stroke: 4px rgba(255,255,255,.88);
+  -webkit-text-stroke: 4px rgba(3, 3, 3, 0.88);
   text-shadow:
     0 2px 6px rgba(0,0,0,.25),
     0 8px 20px rgba(0,0,0,.25);
@@ -63,7 +63,7 @@ body{ margin:0; font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, R
 }
 
 @media (max-width: 560px){
-  .hero__headline{ -webkit-text-stroke: 3px rgba(255,255,255,.92); }
+  .hero__headline{ -webkit-text-stroke: 3px rgba(5, 5, 5, 0.938); }
 }
 .hero__subtitle{ opacity:.9; margin: 12px auto 0; max-width: 800px; }
 .hero__cta{ margin-top:24px; display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
@@ -81,14 +81,62 @@ body{ margin:0; font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, R
 .about__art img{ width:100%; height:auto; display:block; }
 
 /* GRIDS */
-.logo-grid{ display:grid; grid-template-columns: repeat(6, 1fr); gap:16px; }
-.logo-tile{ background:#111; color:#fff; display:grid; place-items:center; height:120px; border-radius:14px; border:1px solid #2a2a2a; }
-@media (max-width: 900px){
-  .logo-grid{ grid-template-columns: repeat(3, 1fr); }
+/* =========================
+   REGLAS COMUNES (no toques)
+   ========================= */
+.logo-tile.logo-tile--image{
+  display:flex; flex-direction:column; align-items:center;
+  background:transparent; border:none; height:auto; gap:10px;
 }
-@media (max-width: 520px){
-  .logo-grid{ grid-template-columns: repeat(2, 1fr); }
+.logo-tile.logo-tile--image img{
+  width:100%; height:100%; object-fit:cover;
 }
+.logo-tile.logo-tile--image .logo-text{
+  margin:0; text-align:center; font-weight:800; color:#111;
+}
+
+/* =========================
+   CO-STREAMERS (pequeñas 4:3)
+   ========================= */
+#co-streamers .logo-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap:16px; justify-items:center;
+}
+#co-streamers .logo-tile.logo-tile--image a{
+  display:block;
+  width:160px;            /* controla el ancho de cada tarjeta */
+  aspect-ratio: 4 / 2;    /* un poco más ancho que alto */
+  border-radius:18px; border:1px solid #2a2a2a; overflow:hidden;
+}
+
+/* Si algún logo no debe cortarse (p. ej. Abstract) */
+#co-streamers .logo-tile.logo-tile--image img.logo--contain{
+  object-fit:contain; background:#0e0e0e; padding:6px;
+}
+
+/* =========================
+   PRESENTADORES (GamingGamma grande 16:9)
+   ========================= */
+#presenters .logo-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap:18px; justify-items:flex-start;
+}
+#presenters .logo-tile.logo-tile--image a{
+  display:block;
+  width:160px;            
+  aspect-ratio: 4 / 3;   
+  border-radius:18px; border:1px solid #2a2a2a; overflow:hidden;
+}
+
+/* Móvil: reduce ambos tamaños */
+@media (max-width: 600px){
+  #co-streamers   .logo-tile.logo-tile--image a{ width:130px; }
+  #presenters     .logo-tile.logo-tile--image a{ width:240px; }
+}
+
+
 
 /* STAFF */
 .staff-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:20px; }
