@@ -110,13 +110,13 @@ body{ margin:0; font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, R
   border-radius:18px; border:1px solid #2a2a2a; overflow:hidden;
 }
 
-/* Si algún logo no debe cortarse (p. ej. Abstract) */
+/* Si algún logo no debe cortarse */
 #co-streamers .logo-tile.logo-tile--image img.logo--contain{
   object-fit:contain; background:#0e0e0e; padding:6px;
 }
 
 /* =========================
-   PRESENTADORES (GamingGamma grande 16:9)
+   PRESENTADORES (grande 16:9)
    ========================= */
 #presenters .logo-grid{
   display:grid;
@@ -130,10 +130,26 @@ body{ margin:0; font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, R
   border-radius:18px; border:1px solid #2a2a2a; overflow:hidden;
 }
 
+/* =========================
+   PATROCINADORES (grande 16:9)
+   ========================= */
+#patrocinadores .logo-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap:16px; justify-items:center;
+}
+#patrocinadores .logo-tile.logo-tile--image a{
+  display:block;
+  width:160px;            
+  aspect-ratio: 4 / 3;   
+  border-radius:18px; border:1px solid #2a2a2a; overflow:hidden;
+}
+
 /* Móvil: reduce ambos tamaños */
 @media (max-width: 600px){
   #co-streamers   .logo-tile.logo-tile--image a{ width:130px; }
   #presenters     .logo-tile.logo-tile--image a{ width:240px; }
+  #patrocinadores     .logo-tile.logo-tile--image a{ width:240px; }
 }
 
 
