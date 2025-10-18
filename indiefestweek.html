@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Indie Chile Week | Indie Fest Chile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Indie Chile Week: descubre y apoya juegos chilenos en Steam." />
+  <!-- Open Graph básico -->
+  <meta property="og:title" content="Indie Chile Week" />
+  <meta property="og:description" content="Descubre y apoya juegos chilenos en Steam." />
+  <meta property="og:image" content="assets/logo.png" />
+
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Estilos específicos de esta página -->
+  <style>
+    /* HERO */
+    .week-hero{
+      position: relative;
+      background: #8e1f18 url("assets/indiechileweek-hero.png") center/cover no-repeat;
+      min-height: clamp(320px, 60vh, 560px);
+      display: flex; align-items: center;
+      isolation: isolate;
+    }
+    .week-hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.35));
+      z-index:0;
+    }
+    .week-hero .container{ position:relative; z-index:1; }
+    .week-title{
+      color: #fff;
+      font-weight: 900;
+      font-size: clamp(32px, 5vw, 56px);
+      letter-spacing: -0.02em;
+      margin: 0 0 10px;
+    }
+    .week-sub{ color:#f5f5f5; font-weight:600; margin:0 0 20px; }
+
+    .btn{ display:inline-block; padding:.85rem 1.1rem; border-radius:999px; font-weight:800; }
+    .btn--light{ background:#fff; color:#111; border:1px solid #e5e5e5; }
+    .btn--accent{ background:#f1a208; color:#000; }
+    .btn + .btn{ margin-left:.5rem; }
+
+    /* Cuerpo */
+    .section--week{ background:#f6f6f6; padding:36px 0 64px; }
+    .lead{ font-size: clamp(16px, 2.1vw, 18px); color:#333; max-width:900px; }
+    .link-strong{ text-decoration:none; color:#c23; font-weight:800; }
+    .link-strong:hover{ text-decoration:underline; }
+
+    /* Reusar tu .container jeśli ya existe en styles.css */
+    .container{ max-width:1100px; margin:0 auto; padding:0 20px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <nav class="nav__menu" id="mainMenu" aria-label="Principal">
+        <a href="#about">Nosotros</a>
+        <a href="#presenters">Presentadores</a>
+        <a href="#co-streamers">Co-streamers</a>
+        <a href="#patrocinadores">Patrocinadores</a>
+        <a href="#contact">Contacto</a>
+        <!--<a href="2025.html">Edicion 2025</a>-->
+        <a href="indiefestweek.html">IndiesChileWeek</a>
+        <!--<a class="btn btn--accent"  data-link="form"   target="_blank" rel="noopener">Postula tu juego</a>-->
+        <a class="btn btn--primary" data-link="coform" target="_blank" rel="noopener">Postula como Co-Streamer</a>
+      </nav>
+    </div>
+  </header>
+  <!-- HERO -->
+  <header class="week-hero">
+    <div class="container">
+      <h1 class="week-title">Indie Chile Week</h1>
+      <p class="week-sub">Una semana para descubrir, jugar y apoyar videojuegos chilenos.</p>
+      <div class="actions">
+        <a class="btn btn--accent" href="https://store.steampowered.com/curator/45770525/sale/IndiesChileWeek" target="_blank" rel="noopener">Ver en Steam</a>
+        <a class="btn btn--light" href="index.html">Volver al inicio</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="section section--week">
+    <div class="container">
+      <h2 class="section__title">¡Súmate a la Indie Chile Week!</h2>
+      <p class="lead">
+        Te invitamos a visitar la curaduría oficial en Steam, donde reunimos
+        juegos creados en Chile con descuentos, demos y novedades.
+        Ingresa directamente aquí:
+        <a class="link-strong" href="https://store.steampowered.com/curator/45770525/sale/IndiesChileWeek" target="_blank" rel="noopener">
+          https://store.steampowered.com/curator/45770525/sale/IndiesChileWeek
+        </a>.
+      </p>
+
+      <p class="lead">
+        Comparte la iniciativa y ayuda a que más personas conozcan los proyectos locales.
+        ¡No dudes en probar estos grandes proyectos!
+      </p>
+    </div>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

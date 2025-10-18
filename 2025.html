@@ -6,13 +6,38 @@
   <title>Indie Fest Chile — Home</title>
   <meta name="description" content="Indie Fest Chile: el festival de videojuegos independientes de Chile." />
   <meta name="theme-color" content="#971d1d" />
+  <meta property="og:title" content="Repetición | Indie Fest Chile">
+  <meta property="og:description" content="Vuelve a ver el show completo.">
+  <meta property="og:type" content="video.other">
+  <meta property="og:image" content="assets/logo.png">
   <link rel="icon" href="assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* marco del player */
+    .replay-hero{ padding:48px 0 24px; background:#f3f3f3; }
+    .container{ max-width:1100px; margin:0 auto; padding:0 20px; }
+    .title{ font-weight:900; font-size:clamp(28px,3.6vw,44px); letter-spacing:-.02em; }
+    .subtitle{ margin-top:6px; color:#444; font-weight:600; }
+    .player-wrap{
+      margin:22px 0;
+      border-radius:16px; overflow:hidden;
+      box-shadow:0 14px 40px rgba(0,0,0,.15);
+      background:#000;
+      aspect-ratio:16/9;   /* responsive */
+    }
+    .player-wrap iframe{ width:100%; height:100%; border:0; display:block; }
+    .actions{ display:flex; gap:10px; margin:14px 0 0; }
+    .btn{ display:inline-block; padding:.8rem 1.1rem; border-radius:999px; font-weight:800; }
+    .btn--light{ background:#fff; border:1px solid #ddd; }
+    .btn--accent{ background:#f1a208; color:#000; }
+  </style>
 </head>
 <body>
+
   <!-- NAVBAR -->
   <header class="nav">
     <div class="container nav__inner">
@@ -23,7 +48,7 @@
         <a href="#co-streamers">Co-streamers</a>
         <a href="#patrocinadores">Patrocinadores</a>
         <a href="#contact">Contacto</a>
-        <!--<a href="2025.html">Edicion 2025</a>-->
+        <a href="/2025">Edicion 2025</a>
         <a href="indiefestweek.html">IndiesChileWeek</a>
         <!--<a class="btn btn--accent"  data-link="form"   target="_blank" rel="noopener">Postula tu juego</a>-->
         <a class="btn btn--primary" data-link="coform" target="_blank" rel="noopener">Postula como Co-Streamer</a>
@@ -31,67 +56,46 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="container hero__inner">
-      <div class="hero__stage">
-        <div class="hero__frame">
-          <img src="assets/logo.png" alt="Indie Fest Chile" class="hero__logo" />
-          <h1 class="hero__headline">TE DAMOS LA BIENVENIDA A:</h1>
-        </div>
+  <header class="replay-hero">
+    <div class="container">
+      <h1 class="title">Repetición del evento</h1>
+      <p class="subtitle">Vuelve a ver el show completo de Indie Fest Chile 2025.</p>
+
+      <div class="player-wrap">
+        <!-- El src se setea por JS para permitir ?v=VIDEO_ID -->
+        <iframe id="ytPlayer"
+          title="Indie Fest Chile - Repetición"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
       </div>
-      <p class="hero__subtitle">Un espacio dedicado a videojuegos hechos en Chile y todos los que quieran conocer la industria.</p>
-      <p class="hero__subtitle">PREPARATE PARA CONOCER MAS DE 80 JUEGOS DE ORIGEN NACIONAL EN UN SOLO LUGAR</p>
-      <div class="hero__cta">
-        <a class="btn btn--light" href="#about">Conocer más</a>
-        <!--<a class="btn btn--accent"  data-link="form"   target="_blank" rel="noopener">Postula tu juego</a>-->
-        <a class="btn btn--primary" data-link="coform" target="_blank" rel="noopener">Postula como Co-Streamer</a>
+
+      <div class="actions">
+        <a class="btn btn--light" href="index.html">Volver al inicio</a>
+        <a class="btn btn--accent" href="https://www.youtube.com/@IndieFestChile" target="_blank" rel="noopener">Ver en YouTube</a>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <div class="container about__grid">
-      <div class="about__text">
-        <h2 class="section__title">¿Que es Indie Fest Chile?</h2>
-        <p>Es un <strong>showcase</strong> 100% digital creado con una sola cosa en mente:</p>
-        <p>Sabemos que detras de cada uno de esos juego que nos divierten o que nos sorprende con sus innovaciones, hay una persona o equipo que lo da todo por crear algo que podamos disfrutar. Pero es un trabajo que no siempre algo a lo que de visibilidad o se le de reconocimiento.</p>
-        <p>Es por ello que Indie fest chile, en su primera edición, busca dar esa visibilidad para que no solo los desarrolladores tengan la oportunidad de mostrar los resultados de ese trabajo, si no que además el público pueda conocer una industria que para la mayoria es desconocido.</p>
-        <p>Lamentablemente las postulaciones para los desarrolladores ya se encuentra cerreda pero esperamos en la proxima edición contar con quienes no alcanzaron</p>
-        <!--<div class="about__actions">
-          <a class="btn btn--primary" data-link="form"   target="_blank" rel="noopener">Postula tu juego</a>
-        </div>-->
-        <p>Si eres streamer y deseas ser parte de la fiesta del videojuego chileno, ¡no dudes en postular para ser Co-Streamer!</p>
-        <div class="about__actions">
-          <a class="btn btn--accent"  data-link="coform" target="_blank" rel="noopener">Postula Co-Streamer</a>
-        </div>
-      </div>
-      <div class="about__art">
-        <div class="art__card">
-          <img src="assets/logo.png" alt="Indie Fest Chile" />
-        </div>
-      </div>
-    </div>
-  </section>
+  <script>
+    // ID por defecto (cámbialo por el de tu repetición)
+    const DEFAULT_VIDEO_ID = 'aqz-KE-bpKQ'; // <-- reemplaza por tu ID real
 
-  <section class="section" id="about">
-    <div class="container about__grid">
-      <div class="about__text">
-        <h2 class="section__title">¿Cuando será el evento y donde puedo verlo?</h2>
-          <p> Este <strong>showcase</strong> donde podras conocer <strong>mas de 80 juegos de origen chileno</strong> podrá ser visualizado el día <strong>DOMINGO 19 DE OCTUBRE A LAS 16:00HRS</strong> mediante nuestros canales oficiales en <a href="https://youtube.com/@IndieFestChile" target="_blank" rel="noopener" class="link-strong"><strong>YouTube</strong></a> y <a href="https://twitch.tv/indiefestchile" target="_blank" rel="noopener" class="link-strong"><strong>Twitch</strong></a>.</p>
-          <p>Además podras disfrutar del evento, si lo prefieres, mediante las cuentas oficiales de los co-streamers que encontraras mas abajo </p>
-        <!--<div class="about__actions">
-          <a class="btn btn--accent"  data-link="form"   target="_blank" rel="noopener">Postula tu juego</a>
-        </div>-->
-      </div>
-    </div>
-  </section>
+    // Permite usar ?v=VIDEO_ID para cambiar el video
+    const url = new URL("https://www.youtube.com/watch?v=w7Cm74nDhac"); //CAMBIAR AQUI EL VIDEO!!!!
+    const vid = (url.searchParams.get('v') || DEFAULT_VIDEO_ID).trim();
 
-  <!-- Presentadores -->
+    // Usa dominio "nocookie" para mayor privacidad
+    const src = `https://www.youtube-nocookie.com/embed/${vid}?rel=0&modestbranding=1&color=white`;
+
+    const iframe = document.getElementById('ytPlayer');
+    iframe.src = src;
+  </script>
+<!-- Presentadores -->
   <section class="section section--alt" id="presenters">
     <div class="container">
-      <h2 class="section__title">Presentadores</h2>
+      <h2 class="section__title">Presentadores Edicion 2025</h2>
       <h3 class=""section__title>haz click en el logo para conocer mas</h3>
       <div class="logo-grid">
         <div class="logo-tile logo-tile--image">
@@ -160,10 +164,7 @@
   <!-- Co-streamer -->
   <section class="section" id="co-streamers">
     <div class="container">
-      <h2 class="section__title">Co-streamers</h2>
-      <div class="about__actions">
-          <a class="btn btn--accent"  data-link="coform" target="_blank" rel="noopener">Postula Co-Streamer</a>
-        </div>
+      <h2 class="section__title">Co-streamers Edicion 2025</h2>
       <h3 class=""section__title>haz click en el logo para conocer mas sobre nuestros co-streamers</h3>
       <div class="logo-grid">
         <div class="logo-tile logo-tile--image">
@@ -262,12 +263,6 @@
           </a>
           <h4 class="logo-text">Chanchuus</h4>
         </div>
-        <div class="logo-tile logo-tile--image">
-          <a href="https://www.youtube.com/@LowDefinitionLD">
-            <img class="logo-tile" src="assets/LD TALK LOGO_TeleAtras.png" alt="Low Definition LD" >
-          </a>
-          <h4 class="logo-text">Low Definition LD</h4>
-        </div>
       </div>
     </div>
   </section>
@@ -275,7 +270,7 @@
   <!-- Patrocinadores -->
   <section class="section" id="patrocinadores">
     <div class="container">
-      <h2 class="section__title">Patrocinadores</h2>
+      <h2 class="section__title">Patrocinadores Edicion 2025</h2>
       <h3 class=""section__title>haz click en el logo para conocer a nuestros patrocinadores</h3>
       <div class="logo-grid">
         <div class="logo-tile logo-tile--image">
