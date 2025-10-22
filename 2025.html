@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 
-  <style>
+  <!--<style>
     /* marco del player */
     .replay-hero{ padding:48px 0 24px; background:#f3f3f3; }
     .container{ max-width:1100px; margin:0 auto; padding:0 20px; }
@@ -31,10 +31,10 @@
     }
     .player-wrap iframe{ width:100%; height:100%; border:0; display:block; }
     .actions{ display:flex; gap:10px; margin:14px 0 0; }
-    .btn{ display:inline-block; padding:.8rem 1.1rem; border-radius:999px; font-weight:800; }
+    .btn{ display:inline-block; padding:.8rem 1.1rem; border-radius:999px; font-weight:1000; }
     .btn--light{ background:#fff; border:1px solid #ddd; }
     .btn--accent{ background:#f1a208; color:#000; }
-  </style>
+  </style>-->
 </head>
 <body>
 
@@ -46,52 +46,59 @@
         <a href="index.html">Volver al inicio</a>
         <!--<a href="2025.html">Edicion 2025</a>-->
         <a href="indiefestweek.html">IndiesChileWeek</a>
-        <!--<a class="btn btn--accent"  data-link="form"   target="_blank" rel="noopener">Postula tu juego</a>-->
-        <a class="btn btn--primary" data-link="coform" target="_blank" rel="noopener">Postula como Co-Streamer</a>
       </nav>
     </div>
   </header>
 
-  <header class="replay-hero">
+  <header class="hero">
     <div class="container">
-      <h1 class="title">Repetición del evento</h1>
-      <p class="subtitle">Vuelve a ver el show completo de Indie Fest Chile 2025.</p>
-
-      <div class="player-wrap">
-        <!-- El src se setea por JS para permitir ?v=VIDEO_ID -->
-        <iframe id="ytPlayer"
-          title="Indie Fest Chile - Repetición"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          referrerpolicy="strict-origin-when-cross-origin">
-        </iframe>
+      <div class="hero__stage">
+        <div class="hero__frame">
+          <img src="assets/logo.png" alt="Indie Fest Chile" class="hero__logo" />
+          <h1 class="hero__headline">Repetición Edición 2025:</h1>
+        </div>
+      </div>
+      <p class="hero__subtitle">Vuelve a ver el show completo de la edición 2025 y revive todos las sorpresas que trajo consigo el showcase y sus presentadores</p>
+      <div class="hero__cta">
+        <a class="btn_2 btn--accent" href="https://www.youtube.com/@IndieFestChile" target="_blank" rel="noopener">Ver en YouTube</a>
+        <!--<a class="btn btn--accent"  data-link="form"   target="_blank" rel="noopener">Postula tu juego</a>
+        <a class="btn btn--primary" data-link="coform" target="_blank" rel="noopener">Postula como Co-Streamer</a>-->
       </div>
 
-      <div class="actions">
-        <a class="btn btn--light" href="index.html">Volver al inicio</a>
-        <a class="btn btn--accent" href="https://www.youtube.com/@IndieFestChile" target="_blank" rel="noopener">Ver en YouTube</a>
-      </div>
-    </div>
+
   </header>
 
-  <script>
-    // ID por defecto (cámbialo por el de tu repetición)
-    const DEFAULT_VIDEO_ID = 'aqz-KE-bpKQ'; // <-- reemplaza por tu ID real
+  <!--<script>
+  function extractYouTubeId(input){
+    if (!input) return null;
+    if (/^[\w-]{11}$/.test(input)) return input;        // ID “limpio”
+    try {
+      const u = new URL(input);
+      if (u.searchParams.get('v')) return u.searchParams.get('v');     // watch?v=
+      let m = u.pathname.match(/^\/([\w-]{11})$/); if (m) return m[1];  // youtu.be/ID
+      m = u.pathname.match(/shorts\/([\w-]{11})/); if (m) return m[1];  // shorts/ID
+      m = u.pathname.match(/embed\/([\w-]{11})/);  if (m) return m[1];  // embed/ID
+    } catch(e) {}
+    return null;
+  }
 
-    // Permite usar ?v=VIDEO_ID para cambiar el video
-    const url = new URL("https://www.youtube.com/watch?v=w7Cm74nDhac"); //CAMBIAR AQUI EL VIDEO!!!!
-    const vid = (url.searchParams.get('v') || DEFAULT_VIDEO_ID).trim();
+  const DEFAULT_ID = 'M7lc1UVf-VE';
+  const q = new URL(location.href).searchParams;
+  const provided = q.get('v') || q.get('url') || 'https://www.youtube.com/watch?v=DHjNkq6RlrE';
+  const id = extractYouTubeId(provided) || DEFAULT_ID;
 
-    // Usa dominio "nocookie" para mayor privacidad
-    const src = `https://www.youtube-nocookie.com/embed/${vid}?rel=0&modestbranding=1&color=white`;
+  document.getElementById('ytPlayer').src =
+    `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1&color=white`;
+</script>-->
 
-    const iframe = document.getElementById('ytPlayer');
-    iframe.src = src;
-  </script>
+<!--<div class="player">
+    <iframe id="ytPlayer" title="Repetición" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>-->
+
 <!-- Presentadores -->
   <section class="section section--alt" id="presenters">
     <div class="container">
-      <h2 class="section__title">Presentadores Edicion 2025</h2>
+      <h2 class="section__title">Presentadores</h2>
       <h3 class=""section__title>haz click en el logo para conocer mas</h3>
       <div class="logo-grid">
         <div class="logo-tile logo-tile--image">
@@ -160,7 +167,10 @@
   <!-- Co-streamer -->
   <section class="section" id="co-streamers">
     <div class="container">
-      <h2 class="section__title">Co-streamers Edicion 2025</h2>
+      <h2 class="section__title">Co-streamers</h2>
+      <div class="about__actions">
+          <a class="btn btn--accent"  data-link="coform" target="_blank" rel="noopener">Postula Co-Streamer</a>
+        </div>
       <h3 class=""section__title>haz click en el logo para conocer mas sobre nuestros co-streamers</h3>
       <div class="logo-grid">
         <div class="logo-tile logo-tile--image">
@@ -259,6 +269,12 @@
           </a>
           <h4 class="logo-text">Chanchuus</h4>
         </div>
+        <div class="logo-tile logo-tile--image">
+          <a href="https://www.youtube.com/@LowDefinitionLD">
+            <img class="logo-tile" src="assets/LD TALK LOGO_TeleAtras.png" alt="Low Definition LD" style="object-fit:cover; object-position:center 70%;">
+          </a>
+          <h4 class="logo-text">Low Definition LD</h4>
+        </div>
       </div>
     </div>
   </section>
@@ -266,7 +282,7 @@
   <!-- Patrocinadores -->
   <section class="section" id="patrocinadores">
     <div class="container">
-      <h2 class="section__title">Patrocinadores Edicion 2025</h2>
+      <h2 class="section__title">Patrocinadores</h2>
       <h3 class=""section__title>haz click en el logo para conocer a nuestros patrocinadores</h3>
       <div class="logo-grid">
         <div class="logo-tile logo-tile--image">
