@@ -8,7 +8,7 @@
   --hero-height: clamp(220px, 38vh, 360px); /* altura máxima del HERO */
 
   --hero-max-w: 780px; /* ancho máximo del HERO (frame + logo) */
-  --hero-headline-max: 44px; /* tamaño máximo del titular sobre el logo */
+  --hero-headline-max: 32px; /* tamaño máximo del titular sobre el logo */
 
   --red: #971d1d;
   --red-dark: #7f1717;
@@ -16,13 +16,29 @@
   --black: #0f0f0f;
   --light: #f4f4f5;
   --white: #ffffff;
+
+  --radius-pill: 999px;
+  --radius-card: 16px;
+  --shadow-card: 0 10px 24px rgba(0,0,0,.08);
+  --shadow-card-hover: 0 16px 32px rgba(0,0,0,.14);
+  --transition: .18s ease;
 }
 
 *{ box-sizing: border-box; }
 html{ scroll-behavior:smooth; }
-body{ margin:0; font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif; color:#18181b; background:#fff; }
+body{
+  margin:0; font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+  color:#18181b; background:#fff;
+  /* Footer "pegado" al fondo aunque la página tenga poco contenido (ej. redes.html) */
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
 
 .container{ width:min(1200px, 92%); margin-inline:auto; }
+
+/* Evita que el nav sticky tape el destino al hacer scroll a un ancla */
+section, footer{ scroll-margin-top: 88px; }
 
 /* NAVBAR */
 .nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.9); backdrop-filter:saturate(180%) blur(8px); border-bottom:1px solid #e5e7eb; }
@@ -31,50 +47,55 @@ body{ margin:0; font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, R
 .brand__logo{ width:40px; height:40px; background:#fff; border-radius:10px; object-fit:contain; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
 .brand__name{ font-weight:800; letter-spacing:-.02em; }
 .nav__menu{ display:flex; align-items:center; gap:20px; }
-.nav__menu a{ text-decoration:none; color:#111; font-weight:600; }
-.nav__toggle{ display:none; background:none; border:1px solid #e5e7eb; border-radius:10px; padding:8px 10px; font-size:20px; }
+.nav__menu a{ text-decoration:none; color:#111; font-weight:600; transition: color var(--transition); }
+.nav__menu a:hover, .nav__menu a:focus-visible{ color: var(--red); }
+.nav__toggle{ display:none; background:none; border:1px solid #e5e7eb; border-radius:10px; padding:8px 10px; font-size:20px; cursor:pointer; }
 
-.btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:12px 18px; border-radius:20px; font-weight:800; text-decoration:none; border:1px solid transparent; cursor:pointer; }
-.btn_2{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:18px 26px; border-radius:14px; font-weight:900; text-decoration:none; border:1px solid transparent; cursor:pointer; }
-.btn--accent{ background:var(--orange); color:#111; }
+/* BUTTONS */
+.btn, .btn_2{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-weight:800; text-decoration:none; border:1px solid transparent;
+  border-radius: var(--radius-pill); cursor:pointer;
+  transition: transform var(--transition), filter var(--transition), box-shadow var(--transition);
+}
+.btn{ padding:12px 20px; font-size:15px; }
+.btn_2{ padding:16px 26px; font-size:16px; font-weight:900; }
 .btn--accent{ background:var(--orange); color:#111; }
 .btn--primary{ background:var(--red); color:var(--white); }
 .btn--light{ background:#fff; color:#111; border-color:#e5e7eb; }
-.btn:hover{ filter:brightness(0.97); }
+.btn:hover, .btn_2:hover{ filter:brightness(0.96); transform:translateY(-1px); }
+.btn:focus-visible, .btn_2:focus-visible{ outline:3px solid rgba(241,162,8,.55); outline-offset:2px; }
 
 /* HERO */
 .hero{ background: linear-gradient(180deg, var(--red) 0%, var(--red-dark) 100%); color:#fff; }
 .hero__inner{ padding: 28px 0 36px; text-align:center; }
 .hero__stage{ display:grid; place-items:center; margin: 8px auto 16px; width:min(var(--hero-max-w), 92%); }
 .hero__frame{ position:relative; width:100%; height: var(--hero-height); background:#fff; border-radius:24px; overflow:hidden; box-shadow: 0 18px 40px rgba(0,0,0,.12); border:1px solid #eee; }
-.hero__logo{ position:absolute; inset:0; width:100%; height:100%; display:block; object-fit:cover; object-position: var(--hero-focus-x) var(--hero-focus-y); transform: scale(var(--hero-zoom)); transform-origin: center; will-change: transform; filter: drop-shadow(0 6px 18px rgba(0,0,0,.35)); pointer-events:none; }
+.hero__logo{ position:absolute; inset:0; width:100%; height:100%; display:block; object-fit:cover; object-position: var(--hero-focus-x) var(--hero-focus-y); transform: scale(var(--hero-zoom)); transform-origin: center; will-change: transform; pointer-events:none; }
 .hero__headline{
-  position:absolute; left:50%; top:40%; transform:translate(-50%,-50%);
-  width: 88%;
-  margin:0;
-  font-weight:900;
-  letter-spacing:-.02em;
-  font-size: clamp(20px, 3vw + 10px, var(--hero-headline-max));
-  color: var(--orange);
+  position:absolute; left:0; right:0; bottom:0;
+  margin:0; padding: 32px 20px 16px;
+  font-weight:800;
+  letter-spacing:-.01em;
+  font-size: clamp(18px, 2.2vw + 8px, var(--hero-headline-max));
+  color:#fff;
   text-align:center;
-  -webkit-text-stroke: 4px rgba(3, 3, 3, 0.88);
-  text-shadow:
-    0 2px 6px rgba(0,0,0,.25),
-    0 8px 20px rgba(0,0,0,.25);
-  paint-order: stroke fill;
-}
-
-@media (max-width: 560px){
-  .hero__headline{ -webkit-text-stroke: 3px rgba(5, 5, 5, 0.938); }
+  text-shadow: 0 2px 6px rgba(0,0,0,.4);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.68) 100%);
 }
 .hero__subtitle{ opacity:.9; margin: 12px auto 0; max-width: 800px; }
-.hero__subtitle_replay{ opacity:.9; margin: 0px auto 0; max-width: 1200px; }
 .hero__cta{ margin-top:24px; display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+
+/* PAGE HEADER (banner simple, sin logo, para páginas secundarias como Nuestras Redes) */
+.page-header{ background: linear-gradient(180deg, var(--red) 0%, var(--red-dark) 100%); color:#fff; padding:56px 0; text-align:center; }
+.page-header__title{ font-weight:900; letter-spacing:-.02em; margin:0 0 10px; font-size: clamp(28px, 4vw + 8px, 48px); }
+.page-header__subtitle{ opacity:.9; margin:0 auto; max-width:640px; }
 
 /* SECTIONS */
 .section{ padding: 72px 0; }
 .section--alt{ background: var(--light); }
 .section__title{ font-size: clamp(24px, 3vw, 36px); font-weight:900; letter-spacing:-.02em; margin:0 0 20px; }
+.section__subtitle{ margin: -12px 0 24px; font-size: clamp(14px, 1.6vw, 16px); font-weight:600; color:#71717a; }
 
 /* ABOUT */
 .about__grid{ display:grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items:center; }
@@ -83,102 +104,101 @@ body{ margin:0; font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, R
 .about__art .art__card{ background:#fff; border-radius:20px; padding:18px; box-shadow: 0 10px 30px rgba(0,0,0,.08); border:1px solid #eee; }
 .about__art img{ width:100%; height:auto; display:block; }
 
-/* GRIDS */
 /* =========================
-   REGLAS COMUNES (no toques)
+   GRILLAS DE LOGOS (Presentadores / Co-streamers / Patrocinadores)
+   Mismo look & feel en las tres secciones: tarjeta blanca, borde suave,
+   sombra sutil y elevación al pasar el mouse. El grid es responsive
+   por sí solo (auto-fit), sin breakpoints manuales por sección.
    ========================= */
-.logo-tile.logo-tile--image{
-  display:flex; flex-direction:column; align-items:center;
-  background:transparent; border:none; height:auto; gap:10px;
-}
-.logo-tile.logo-tile--image img{
-  width:100%; height:100%; object-fit:cover;
-}
-.logo-tile.logo-tile--image .logo-text{
-  margin:0; text-align:center; font-weight:800; color:#111;
-}
-
-/* =========================
-   CO-STREAMERS (pequeñas 4:3)
-   ========================= */
-#co-streamers .logo-grid{
+.logo-grid{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap:16px; justify-items:center;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap:18px;
+  justify-items:center;
 }
-#co-streamers .logo-tile.logo-tile--image a{
-  display:block;
-  width:160px;
-  aspect-ratio: 4 / 2;
-  border-radius:18px; border:1px solid #2a2a2a; overflow:hidden;
+.logo-tile{
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  width:100%; max-width:170px;
+}
+.logo-tile a{
+  display:block; width:100%; aspect-ratio: 4 / 3;
+  border-radius: var(--radius-card); overflow:hidden;
+  border:1px solid #e5e7eb; background:#fff;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.logo-tile a:hover, .logo-tile a:focus-visible{
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+.logo-tile img{ width:100%; height:100%; object-fit:cover; }
+.logo-tile .logo-text{ margin:0; text-align:center; font-weight:800; color:#111; font-size:14px; }
+
+/* Presentadores son fotos de personas: se ven mejor llenando el marco (cover).
+   Co-streamers y patrocinadores son logos/marcas: se ven mejor completos,
+   apoyados sobre un fondo neutro (contain), sin recortarse. */
+#co-streamers .logo-tile img,
+#patrocinadores .logo-tile img{
+  object-fit: contain;
+  padding: 16px;
 }
 
-/* Si algún logo no debe cortarse */
-#co-streamers .logo-tile.logo-tile--image img.logo--contain{
-  object-fit:contain; background:#0e0e0e; padding:6px;
+/* Estado "Próximamente" para tiles */
+.logo-tile--soon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-card);
+  border: 2px dashed #a1a1aa;
+  opacity: .9;
+  font-weight: 800;
+  letter-spacing: .02em;
+  color:#71717a;
+  background:#fafafa;
+  padding:10px;
 }
 
 /* =========================
-   PRESENTADORES (grande 16:9)
+   REDES SOCIALES (página "Nuestras Redes")
    ========================= */
-#presenters .logo-grid{
+.social-grid{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap:18px; justify-items:flex-start;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap:18px;
 }
-#presenters .logo-tile.logo-tile--image a{
-  display:block;
-  width:160px;            
-  aspect-ratio: 4 / 3;   
-  border-radius:18px; border:1px solid #2a2a2a; overflow:hidden;
+.social-card{
+  display:flex; align-items:center; gap:16px;
+  padding:20px; border-radius: var(--radius-card);
+  border:1px solid #e5e7eb; background:#fff;
+  box-shadow: var(--shadow-card);
+  text-decoration:none; color:inherit;
+  transition: transform var(--transition), box-shadow var(--transition);
 }
-
-/* =========================
-   PATROCINADORES (grande 16:9)
-   ========================= */
-#patrocinadores .logo-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap:16px; justify-items:center;
+.social-card:hover, .social-card:focus-visible{
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
 }
-#patrocinadores .logo-tile.logo-tile--image a{
-  display:block;
-  width:160px;            
-  aspect-ratio: 4 / 3;   
-  border-radius:18px; border:1px solid #2a2a2a; overflow:hidden;
+.social-card__icon{
+  flex:0 0 auto;
+  width:52px; height:52px; border-radius:50%;
+  display:grid; place-items:center;
+  background: var(--red); color:#fff;
 }
-
-/* Móvil: reduce ambos tamaños */
-@media (max-width: 600px){
-  #co-streamers   .logo-tile.logo-tile--image a{ width:130px; }
-  #presenters     .logo-tile.logo-tile--image a{ width:240px; }
-  #patrocinadores     .logo-tile.logo-tile--image a{ width:240px; }
-}
-
-
-
-/* STAFF */
-.staff-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:20px; }
-.staff-card{ background:#fff; border-radius:18px; padding:18px; text-align:center; border:1px solid #eee; box-shadow: 0 10px 20px rgba(0,0,0,.05); }
-.staff-card__avatar{ width:180px; height:180px; border-radius:50%; background: radial-gradient(circle at 30% 30%, #cbd5e1, #94a3b8); margin: 12px auto 16px; border: 6px solid #fff; box-shadow: 0 4px 16px rgba(0,0,0,.2); }
-.staff-card__name{ margin:6px 0 0; font-weight:800; }
-.staff-card__role{ margin:4px 0 0; color:#52525b; }
-@media (max-width: 900px){
-  .about__grid{ grid-template-columns: 1fr; }
-  .staff-grid{ grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 560px){
-  .staff-grid{ grid-template-columns: 1fr; }
-}
+.social-card__icon svg{ width:24px; height:24px; }
+.social-card__body strong{ display:block; font-size:16px; font-weight:800; }
+.social-card__body span{ display:block; color:#71717a; font-size:14px; margin-top:2px; }
 
 /* FOOTER */
-.footer{ background:#0c0c0c; color:#fff; padding: 28px 0; }
+.footer{ background:#0c0c0c; color:#fff; padding: 28px 0; margin-top:auto; }
 .footer__inner{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
 .footer__brand{ display:flex; align-items:center; gap:12px; }
 .footer__brand img{ width:36px; height:36px; border-radius:10px; background:#fff; }
 .footer__social{ display:flex; align-items:center; gap:16px; }
-.icon{ width:28px; height:28px; display:inline-grid; place-items:center; color:#fff; opacity:.9; }
+.icon{ width:28px; height:28px; display:inline-grid; place-items:center; color:#fff; opacity:.9; border-radius:6px; transition: opacity var(--transition); }
 .icon:hover{ opacity:1; }
+.icon:focus-visible{ opacity:1; outline:2px solid var(--orange); outline-offset:2px; }
 
 /* MOBILE MENU */
 @media (max-width: 860px){
@@ -187,44 +207,11 @@ body{ margin:0; font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, R
   .nav__menu.open{ display:flex; }
 }
 
-/* HERO without logo */
-.hero__title{
-  font-weight:900;
-  letter-spacing:-.02em;
-  margin: 6px 0 8px;
-  font-size: clamp(28px, 4vw + 8px, 56px);
-  color: var(--orange);
-  text-shadow: 0 2px 6px rgba(0,0,0,.25), 0 8px 20px rgba(0,0,0,.18);
+@media (max-width: 900px){
+  .about__grid{ grid-template-columns: 1fr; }
 }
 
-
-/* Estado "Próximamente" para tiles */
-.logo-tile--soon{
-  border: 2px dashed #444;
-  opacity: .9;
-  font-weight: 800;
-  letter-spacing: .02em;
-}
-
-.logo-title{
-  display:block;
-  max-width:82%;
-  max-height:72%;                 
-  object-fit:contain;             
-  object-position:center;
-  image-rendering:auto;
-}
-
-.logo-tile--image{
-  background:#111;
-  border:1px solid #2a2a2a;
-}
-
-.logo-text{
-  color:#0c0c0c
-}
-
-/* Contenedor del player más ancho */
+/* Contenedor del player más ancho (usado por el embed de YouTube cuando está activo) */
 .player-bleed{
   position: relative;
   left: 50%;
@@ -246,81 +233,3 @@ body{ margin:0; font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, R
   border: 0;
   display: block;
 }
-
-/* -----------------------------------SECCION REPLAY------------------------------------------------- */
-/* Contenedor del player más ancho */
-.player-bleed{
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
-  background: #000;
-}
-/* Altura 16:9 y un ancho máximo cómodo para evitar que sea ENORME en pantallas ultraanchas */
-.player{
-  width: min(1200px, 100vw);  /* tope en desktop */
-  margin: 0 auto;
-  aspect-ratio: 16 / 9;
-}
-.player iframe{
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-}
-
-/* Contenedor del hero */
-.replay-hero{
-  position: relative;
-  max-width: 1200px;          /* + ancho que el resto para que no se vea chico */
-  margin: 24px auto;
-  border-radius: 20px;
-  overflow: hidden;           /* para que el radio recorte la imagen */
-  box-shadow: 0 18px 50px rgba(0,0,0,.18);
-  background: #000;           /* por si la imagen tarda */
-}
-
-/* Media: altura responsiva del hero */
-.replay-hero__media{
-  width: 100%;
-  aspect-ratio: 16 / 9;       /* controla la altura; sube/baja si lo quieres más alto */
-  position: relative;
-}
-.replay-hero__media img{
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;          /* llena el cuadro sin deformar */
-  object-position: 50% 35%;   /* ← mueve el encuadre: (X% Y%). Sube/baja el “corte” */
-}
-
-/* Contenido sobre la imagen */
-.replay-hero__content{
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-content: end center;  /* texto abajo; usa 'center' si lo quieres centrado vertical */
-  padding: 22px;
-  text-align: center;
-  color: #fff;
-  /* degradado para que el texto siempre contraste */
-  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.45) 100%);
-}
-.replay-hero__content h1{
-  font-size: clamp(28px, 4.2vw, 48px);
-  font-weight: 900;
-  letter-spacing: -.02em;
-  margin: 0 0 8px;
-  text-shadow: 0 2px 6px rgba(0,0,0,.35);
-}
-.replay-hero__content p{
-  margin: 0 0 16px;
-  font-weight: 600;
-  text-shadow: 0 2px 6px rgba(0,0,0,.35);
-}
-
-/* Botón reutilizando tus estilos */
-.btn{display:inline-block;padding:.85rem 1.1rem;border-radius:999px;font-weight:800}
-.btn--accent{background:#f1a208;color:#000;border:1px solid rgba(0,0,0,.05)}
-
