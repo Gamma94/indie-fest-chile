@@ -1,9 +1,9 @@
 /* Indie Fest Chile - Home styles */
 :root{
   /* Foco del recorte del logo en el HERO */
-  --hero-focus-x: 52%;  /* 0% = izquierda, 100% = derecha */
-  --hero-focus-y: 38%;  /* 0% = arriba, 100% = abajo */
-  --hero-zoom: 1.32;    /* 1 = sin zoom, >1 = acerca */
+  --hero-focus-x: 50%;  /* 0% = izquierda, 100% = derecha */
+  --hero-focus-y: 47%;  /* 0% = arriba, 100% = abajo */
+  --hero-zoom: 1.1;    /* 1 = sin zoom, >1 = acerca */
 
   --hero-height: clamp(220px, 38vh, 360px); /* altura máxima del HERO */
 
@@ -194,7 +194,7 @@ section, footer{ scroll-margin-top: 88px; }
 .footer{ background:#0c0c0c; color:#fff; padding: 28px 0; margin-top:auto; }
 .footer__inner{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
 .footer__brand{ display:flex; align-items:center; gap:12px; }
-.footer__brand img{ width:36px; height:36px; border-radius:10px; background:#fff; }
+.footer__brand img{ width:36px; height:36px; border-radius:10px; background:#fff; object-fit:cover; }
 .footer__social{ display:flex; align-items:center; gap:16px; }
 .icon{ width:28px; height:28px; display:inline-grid; place-items:center; color:#fff; opacity:.9; border-radius:6px; transition: opacity var(--transition); }
 .icon:hover{ opacity:1; }

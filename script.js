@@ -1,6 +1,6 @@
 // Indie Fest Chile - Home interactions
 const FORM_URL    = (window.INIT && window.INIT.formUrl)    || 'https://docs.google.com/forms/d/e/1FAIpQLSeNtEP1sWHSezerIWapJbk-qAeq9prUp0HbLmzQGOVy2Ms3vg/viewform';
-const CO_FORM_URL = (window.INIT && window.INIT.coFormUrl) || 'https://docs.google.com/forms/d/e/1FAIpQLScgeALIIFcIREVZLfNxkLhqUi1gE3W6HQyW9YOIknNe7iqHEw/viewform';
+const CO_FORM_URL = (window.INIT && window.INIT.coFormUrl) || 'https://forms.gle/LqVGjWUa2ke99WA78';
 
 // Asigna URLs según el data-atributo
 document.querySelectorAll('[data-link="form"]').forEach(a   => a.href = FORM_URL);
