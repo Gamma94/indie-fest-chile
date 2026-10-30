@@ -143,6 +143,14 @@ section, footer{ scroll-margin-top: 88px; }
   padding: 16px;
 }
 
+/* Grillas de fotos (ej. co-streamers 2026): la imagen llena el marco.
+   Se ancla un poco arriba del centro para no cortar caras en fotos verticales. */
+#co-streamers .logo-grid--cover .logo-tile img{
+  object-fit: cover;
+  object-position: center 25%;
+  padding: 0;
+}
+
 /* Estado "Próximamente" para tiles */
 .logo-tile--soon{
   display:flex;
