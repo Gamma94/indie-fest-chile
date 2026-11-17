@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Games From Chile | Indie Fest Chile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Games From Chile: descubre y apoya videojuegos chilenos en Steam e itch.io." />
+  <!-- Open Graph básico -->
+  <meta property="og:title" content="Games From Chile" />
+  <meta property="og:description" content="Descubre y apoya videojuegos chilenos en Steam e itch.io." />
+  <meta property="og:image" content="assets/logo.png?v=2" />
+
+  <link rel="icon" href="assets/logo.png?v=2" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Estilos específicos de esta página -->
+  <style>
+    /* HERO */
+    .gfc-hero{
+      background: linear-gradient(180deg, var(--red) 0%, var(--red-dark) 100%);
+      min-height: clamp(280px, 45vh, 440px);
+      display: flex; align-items: center;
+    }
+    .gfc-title{
+      color: #fff;
+      font-weight: 900;
+      font-size: clamp(32px, 5vw, 56px);
+      letter-spacing: -0.02em;
+      margin: 0 0 10px;
+    }
+    .gfc-sub{ color:#f5f5f5; font-weight:600; margin:0 0 20px; }
+
+    /* Cuerpo */
+    .section--gfc{ background:#f6f6f6; padding:36px 0 64px; }
+    .lead{ font-size: clamp(16px, 2.1vw, 18px); color:#333; max-width:900px; margin: 0 0 20px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <nav class="nav__menu" id="mainMenu" aria-label="Principal">
+        <a href="index.html">Volver al inicio</a>
+        <a href="2026.html">Edición 2026</a>
+        <a href="2025.html">Edicion 2025</a>
+        <a href="gamesfromchile.html">Games From Chile</a>
+        <a href="redes.html">Nuestras Redes</a>
+      </nav>
+    </div>
+  </header>
+  <!-- HERO -->
+  <header class="gfc-hero">
+    <div class="container">
+      <h1 class="gfc-title">Games From Chile</h1>
+      <p class="gfc-sub">Descubre, juega y apoya videojuegos hechos en Chile.</p>
+      <div class="hero__cta" style="justify-content:flex-start;">
+        <a class="btn btn--accent" href="https://store.steampowered.com/sale/GamesfromChile2026?curator_clanid=41316928" target="_blank" rel="noopener">Ver en Steam</a>
+        <a class="btn btn--light" href="https://itch.io/c/8413660/indie-fest-chile-2026-click-aqu" target="_blank" rel="noopener">Ver en itch.io</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="section section--gfc">
+    <div class="container">
+      <h2 class="section__title">¡Súmate a Games From Chile!</h2>
+      <p class="lead">
+        Te invitamos a visitar el evento <strong>Games From Chile</strong> en Steam, donde podrás
+        descubrir videojuegos desarrollados en Chile. Ingresa directamente aquí:
+      </p>
+      <div class="hero__cta" style="justify-content:flex-start;">
+        <a class="btn btn--accent" href="https://store.steampowered.com/sale/GamesfromChile2026?curator_clanid=41316928" target="_blank" rel="noopener">Evento en Steam</a>
+      </div>
+
+      <p class="lead" style="margin-top:28px;">
+        También puedes revisar la colección en itch.io con los juegos que fueron parte de la
+        <strong>Edición 2026</strong> de Indie Fest Chile:
+      </p>
+      <div class="hero__cta" style="justify-content:flex-start;">
+        <a class="btn btn--accent" href="https://itch.io/c/8413660/indie-fest-chile-2026-click-aqu" target="_blank" rel="noopener">Colección en itch.io</a>
+      </div>
+
+      <p class="lead" style="margin-top:28px;">
+        Comparte la iniciativa y ayuda a que más personas conozcan los proyectos locales.
+        ¡No dudes en probar estos grandes proyectos!
+      </p>
+    </div>
+  </main>
+
+  <!-- CONTACT / FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/logo.png?v=2" alt="Logo" />
+        <span>&copy; <span id="year"></span> Indie Fest Chile</span>
+      </div>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/indiefestchile?igsh=OW5hejh1azFjcjgx" aria-label="Instagram" class="icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11zm0 2a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.75-.75a1 1 0 110 2 1 1 0 010-2z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@indiefestchile" aria-label="TikTok" class="icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 8.1a6.5 6.5 0 01-3.8-1.2V16a6 6 0 11-6-6c.2 0 .3 0 .5.1V12a3.5 3.5 0 103.5 3.5V2h2.5a6.5 6.5 0 006.3 5.1V10a9 9 0 01-3-1.9z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@IndieFestChile" aria-label="YouTube" class="icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 00.5 6.2 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.8 3 3 0 002.1 2.1C4.7 20.5 12 20.5 12 20.5s7.3 0 9.4-.6a3 3 0 002.1-2.1A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+        </a>
+        <a href="https://www.twitch.tv/indiefestchile" aria-label="Twitch" class="icon" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" width="28" height="28" fill="currentColor" aria-hidden="true">
+            <path d="M3.857 0 1 2.857v10.286h3.429V16l2.857-2.857H9.57L14.714 8V0zm9.714 7.429-2.285 2.285H9l-2 2v-2H4.429V1.143h9.142z"/>
+            <path d="M11.857 3.143h-1.143V6.57h1.143zm-3.143 0H7.571V6.57h1.143z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
